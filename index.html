@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Sunny Ninan — System Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f2942;
+    --ink-deep:#081b2c;
+    --paper:#eef1e8;
+    --paper-dim:#c9d3c6;
+    --line:#6f9ab8;
+    --line-dim:rgba(127,184,212,0.28);
+    --signal:#ffb454;
+    --signal-dim:rgba(255,180,84,0.35);
+    --text:#eef1e8;
+    --text-mute:#a9bccb;
+    --display:'Space Grotesk',sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+    --body:'IBM Plex Sans',sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+
+  body{
+    background:var(--ink-deep);
+    background-image:
+      linear-gradient(rgba(127,184,212,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127,184,212,0.06) 1px, transparent 1px);
+    background-size:38px 38px;
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+  }
+
+  a{color:var(--signal);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--signal); outline-offset:3px;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(8,27,44,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dim);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;}
+  .brand{font-family:var(--mono);font-size:14px;letter-spacing:0.08em;color:var(--text-mute);}
+  .brand b{color:var(--signal);}
+  .navlinks{display:flex;gap:26px;font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;}
+  .navlinks a{color:var(--text-mute);}
+  .navlinks a:hover{color:var(--signal);text-decoration:none;}
+
+  /* ---------- LABELS / EYEBROWS ---------- */
+  .tag{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--line);
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .tag::before{content:'';width:22px;height:1px;background:var(--line);display:inline-block;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:96px 0 70px;position:relative;}
+  .hero-grid{display:grid;grid-template-columns:1.35fr 0.9fr;gap:48px;align-items:start;}
+  h1.title{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(2.6rem,6vw,4.4rem);
+    line-height:1.02;letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  h1.title span{color:var(--signal);}
+  .role-line{font-family:var(--mono);font-size:14px;color:var(--text-mute);margin-bottom:22px;letter-spacing:0.02em;}
+  .role-line b{color:var(--paper);font-weight:500;}
+  .summary-lede{max-width:560px;font-size:17px;color:#dde5e0;margin-bottom:28px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:13px;letter-spacing:0.04em;padding:11px 18px;
+    border:1px solid var(--line);color:var(--paper);border-radius:2px;
+    display:inline-flex;align-items:center;gap:8px;transition:border-color .2s, color .2s, background .2s;
+  }
+  .btn:hover{border-color:var(--signal);color:var(--signal);background:rgba(255,180,84,0.06);text-decoration:none;}
+  .btn.solid{background:var(--signal);color:var(--ink-deep);border-color:var(--signal);font-weight:600;}
+  .btn.solid:hover{background:#ffc670;color:var(--ink-deep);}
+
+  /* ---------- PHOTO SCHEMATIC FRAME ---------- */
+  .photo-panel{position:relative;padding:14px;border:1px solid var(--line-dim);}
+  .photo-panel::before,.photo-panel::after,
+  .photo-frame::before,.photo-frame::after{
+    content:'';position:absolute;width:14px;height:14px;
+    border:1.5px solid var(--signal);
+  }
+  .photo-panel::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .photo-panel::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .photo-frame{
+    position:relative;aspect-ratio:4/5;
+    background:
+      repeating-linear-gradient(45deg, rgba(127,184,212,0.10) 0 2px, transparent 2px 10px),
+      var(--ink);
+    border:1px dashed var(--line);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;color:var(--text-mute);
+  }
+  .photo-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .photo-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .photo-frame svg{width:46px;height:46px;opacity:0.55;}
+  .photo-frame .cap{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;text-align:center;padding:0 20px;}
+  .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-caption{font-family:var(--mono);font-size:11px;color:var(--line);letter-spacing:0.06em;margin-top:10px;text-align:center;text-transform:uppercase;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;border-top:1px solid var(--line-dim);}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;flex-wrap:wrap;gap:10px;}
+  h2.h2{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;}
+  .section-idx{font-family:var(--mono);font-size:12px;color:var(--line);letter-spacing:0.1em;}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- SUMMARY ---------- */
+  .summary-panel{
+    border:1px solid var(--line-dim);padding:32px;position:relative;background:rgba(127,184,212,0.03);
+  }
+  .summary-panel p{max-width:760px;color:#dbe4de;font-size:16px;}
+  .summary-panel p+p{margin-top:14px;}
+
+  /* ---------- SKILLS SCHEMATIC ---------- */
+  .skills-schematic{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border:1px solid var(--line-dim);}
+  .skill-cell{
+    border-right:1px solid var(--line-dim);border-bottom:1px solid var(--line-dim);
+    padding:20px 16px;position:relative;
+  }
+  .skill-cell:nth-child(-n+100){}
+  .skill-cell .idx{font-family:var(--mono);font-size:10px;color:var(--line);letter-spacing:0.08em;}
+  .skill-cell .name{font-family:var(--display);font-weight:600;font-size:17px;margin-top:6px;color:var(--paper);}
+  .skill-cell .meta{font-family:var(--mono);font-size:10px;color:var(--text-mute);margin-top:6px;text-transform:uppercase;letter-spacing:0.06em;}
+  .skill-cell.exploring{background:rgba(255,180,84,0.07);}
+  .skill-cell.exploring .name{color:var(--signal);}
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{position:relative;padding-left:34px;}
+  .timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 12px);}
+  .tl-item{position:relative;padding-bottom:44px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:'';position:absolute;left:-34px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--ink-deep);border:2px solid var(--signal);}
+  .tl-role{font-family:var(--display);font-size:19px;font-weight:600;color:var(--paper);}
+  .tl-org{font-family:var(--mono);font-size:13px;color:var(--line);margin-top:2px;}
+  .tl-date{font-family:var(--mono);font-size:11px;color:var(--text-mute);letter-spacing:0.05em;margin-top:6px;text-transform:uppercase;}
+  .tl-desc{margin-top:12px;max-width:680px;color:#d3ddd6;font-size:15px;}
+  .tl-desc ul{margin-top:6px;padding-left:18px;}
+  .tl-desc li{margin-bottom:6px;}
+  .tl-desc li::marker{color:var(--signal);}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .edu-card{border:1px solid var(--line-dim);padding:24px;position:relative;}
+  .edu-card .school{font-family:var(--display);font-weight:600;font-size:18px;color:var(--paper);}
+  .edu-card .deg{font-family:var(--mono);font-size:12px;color:var(--line);margin-top:8px;}
+  .edu-card .yrs{font-family:var(--mono);font-size:11px;color:var(--text-mute);margin-top:10px;text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* ---------- CHANNEL / STATS ---------- */
+  .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid var(--line-dim);}
+  .stat{padding:28px 22px;border-right:1px solid var(--line-dim);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:var(--display);font-size:clamp(2rem,4vw,2.6rem);font-weight:700;color:var(--signal);line-height:1;}
+  .stat .lbl{font-family:var(--mono);font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:0.08em;margin-top:8px;}
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line-dim);}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+  .footer-links{display:flex;gap:24px;font-family:var(--mono);font-size:13px;flex-wrap:wrap;}
+  .footer-note{font-family:var(--mono);font-size:11px;color:var(--text-mute);letter-spacing:0.04em;}
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .photo-panel{max-width:280px;}
+    .stats-row{grid-template-columns:1fr 1fr;}
+    .stat{border-bottom:1px solid var(--line-dim);}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">JSN<b>_</b>PROFILE</div>
+    <div class="navlinks">
+      <a href="#summary">Summary</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="tag">System Profile // Student Engineer</div>
+      <h1 class="title">Joshua Sunny<br><span>Ninan</span></h1>
+      <div class="role-line"><b>Computer Science</b> @ MBCET &nbsp;·&nbsp; Kerala, India</div>
+      <p class="summary-lede">
+        Computer science student building across Python, JavaScript and React Native, with a growing focus
+        on prompt engineering and applied AI. Equally at home writing code and organising the people
+        who write it — currently leading campus AI initiatives and mentoring student cohorts at MBCET.
+      </p>
+      <div class="cta-row">
+        <a class="btn solid" href="#experience">View experience →</a>
+        <a class="btn" href="https://www.linkedin.com/in/joshua-sunny-ninan-391517271/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://www.youtube.com/@JoshuaUltimax" target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-panel">
+        <div class="photo-frame">
+          <img src="images/profilepic.jpeg" alt="Joshua Sunny Ninan">
+        </div>
+      </div>
+      <div class="photo-caption">Fig. 01 — Profile Photograph</div>
+    </div>
+  </div>
+</header>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2 reveal">Summary</h2>
+      <div class="section-idx">01 / SPEC</div>
+    </div>
+    <div class="summary-panel reveal">
+      <p>I'm a computer science enthusiast with a deep-rooted passion for technology and problem-solving. From an
+      early age I've been fascinated by how systems work, and that curiosity continues to drive me as I explore
+      programming, AI, and emerging technologies.</p>
+      <p>Currently building skills in Python, JavaScript, React Native, and AI — including prompt engineering and
+      machine learning fundamentals. Committed to continuous learning, and excited to contribute to impactful tech
+      projects that merge creativity with code.</p>
+    </div>
+
+    <div style="height:28px;"></div>
+
+    <div class="skills-schematic reveal">
+      <div class="skill-cell"><div class="idx">MOD.01</div><div class="name">Python</div><div class="meta">Language</div></div>
+      <div class="skill-cell"><div class="idx">MOD.02</div><div class="name">C</div><div class="meta">Language</div></div>
+      <div class="skill-cell"><div class="idx">MOD.03</div><div class="name">Java</div><div class="meta">Language</div></div>
+      <div class="skill-cell"><div class="idx">MOD.04</div><div class="name">MySQL</div><div class="meta">Database</div></div>
+      <div class="skill-cell"><div class="idx">MOD.05</div><div class="name">HTML / CSS</div><div class="meta">Web</div></div>
+      <div class="skill-cell"><div class="idx">MOD.06</div><div class="name">JavaScript</div><div class="meta">Web</div></div>
+      <div class="skill-cell"><div class="idx">MOD.07</div><div class="name">React Native</div><div class="meta">Mobile</div></div>
+      <div class="skill-cell"><div class="idx">MOD.08</div><div class="name">Prompt Engineering</div><div class="meta">AI / LLM</div></div>
+      <div class="skill-cell exploring"><div class="idx">MOD.09</div><div class="name">Artificial Intelligence</div><div class="meta">Currently exploring</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2 reveal">Experience</h2>
+      <div class="section-idx">02 / TIMELINE</div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-role">Club Lead</div>
+        <div class="tl-org">Openlabs.ai</div>
+        <div class="tl-date">October 2025 — Present · 11 months</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Leading a campus-wide AI initiative, guiding a team of innovation-driven individuals to build a student community.</li>
+            <li>Drove community AI literacy through interactive online workshops on AI tools (NotebookLM, n8n) delivered by resource people.</li>
+            <li>Cross-collaborated with the MBCET Assistive Technology Club and IEEE EMBS SBC MBCET to host an offline technical talk on user-centered design for healthcare technology.</li>
+            <li>Co-organised "Vibeathon," a vibe-coding hackathon with GDGC MBCET, fostering rapid prototyping and AI-driven development practices among participants.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-role">Technical Teammate</div>
+        <div class="tl-org">Google Developer Groups on Campus — MBCET · Trivandrum</div>
+        <div class="tl-date">October 2025 — Present · 11 months</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Led technical workshops for community events — "Winter Arc" (HTML/CSS fundamentals) and "Operation C" (C programming basics) — onboarding beginners into software development.</li>
+            <li>Served on the interview panel to evaluate and select candidates for GDGC sub-roles, helping shape the club's core working team.</li>
+            <li>Co-organised "Technoverse," the club's flagship event, managing logistics and technical execution.</li>
+            <li>Co-organised "Vibeathon," a 2.5-hour vibe-coding hackathon partnered with Openlabs.ai.</li>
+            <li>Partnered with the marketing team, featuring in promotional reels that boosted event visibility.</li>
+            <li>Serving as Technical Mentor for "Project Aurora," a month-long initiative guiding a student cohort through project architecture, development and implementation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-role">Head of Tech</div>
+        <div class="tl-org">Samvadam Club, MBCET</div>
+        <div class="tl-date">June 2026 — Present · 3 months</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Building the MBCET MUN 2026 website.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-role">Class Representative</div>
+        <div class="tl-org">Association for Computer Engineers (ACE), MBCET</div>
+        <div class="tl-date">August 2025 — June 2026 · 11 months</div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-role">Committee Member</div>
+        <div class="tl-org">Association for Computer Engineers (ACE), MBCET</div>
+        <div class="tl-date">August 2024 — August 2025 · 1 year 1 month</div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-role">React Native Intern</div>
+        <div class="tl-org">Meantr Software</div>
+        <div class="tl-date">September 2025 — November 2025 · 3 months</div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-role">Under Secretary General in Tech</div>
+        <div class="tl-org">Samvadam Club, MBCET · Trivandrum</div>
+        <div class="tl-date">June 2025 — September 2025 · 4 months</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2 reveal">Education</h2>
+      <div class="section-idx">03 / RECORD</div>
+    </div>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="school">Mar Baselios College of Engineering and Technology (Autonomous)</div>
+        <div class="deg">Bachelor of Technology — Computer Science · Thiruvananthapuram, Kerala</div>
+        <div class="yrs">September 2023 — May 2027</div>
+      </div>
+      <div class="edu-card">
+        <div class="school">Mar Dionysius School</div>
+        <div class="deg">Secondary &amp; Higher Secondary Education</div>
+        <div class="yrs">2018 — 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="channel">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2 reveal">On YouTube</h2>
+      <div class="section-idx">04 / CHANNEL</div>
+    </div>
+    <p class="reveal" style="max-width:600px;color:#d3ddd6;margin-bottom:24px;">
+      Runs <a href="https://www.youtube.com/@JoshuaUltimax" target="_blank" rel="noopener">@JoshuaUltimax</a> alongside coursework and club work.
+    </p>
+    <div class="stats-row reveal">
+      <div class="stat"><div class="num">61.4K</div><div class="lbl">Subscribers</div></div>
+      <div class="stat"><div class="num">13M</div><div class="lbl">Total views</div></div>
+      <div class="stat"><div class="num">@JoshuaUltimax</div><div class="lbl">Channel handle</div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="tag">End of file</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/joshua-sunny-ninan-391517271/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://www.youtube.com/@JoshuaUltimax" target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+    </div>
+    <div class="footer-note">Kerala, India · Joshua Sunny Ninan</div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
